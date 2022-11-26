@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/styles.css" />
 
     <script
       src="https://kit.fontawesome.com/e5bf7dd093.js"
@@ -23,6 +23,8 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <div class="container">
@@ -30,10 +32,12 @@
         <div class="col-6">
           <header></header>
           <div class="today">
-            <h1>Nashville</h1>
+            <h1 id="city"></h1>
             <h2>
-              <span class= todayTemp>88 </span>
-              <span class= measurement>°F|<a href="#">°C</a></span>
+              <span class= todayTemp id="temperature"></span>
+              <span class= measurement>
+                <a href="#" id="fahrenheit-link">°F</a>|
+                <a href="#" id="celsius-link">°C</a></span>
               <span class="headSun">
                 <i class="fa-solid fa-sun" alt="sunshine"></i>
               </span>
@@ -45,10 +49,10 @@
         <div class="col-6">
           <div class="details">
             <ul>
-              <li>Monday, Sept 19th</li>
-              <li>Sunny, Clear Skies</li>
-              <li>Wind 5 mph</li>
-              <li>Humidity 43%</li>
+              <li id= "current-date"></li>
+              <li><span id= "description"></span></li>
+              <li>Wind: <span id = "wind"></span>mph</li>
+              <li>Humidity: <span id= "humidity"></span>%</li>
             </ul>
           </div>
           </div>
@@ -91,23 +95,36 @@
             </span>
         </ul>
       </span>
-
-
-        <div class="searchBar">
-          <div class="input-group rounded shadow-sm">
-            <input
-              type="search"
-              class="form-control rounded"
-              placeholder="enter a city"
-              aria-label="Search"
-              aria-describedby="search-addon"
-            />
-            <span class="input-group-text border-0 shadow-sm"" id="search-addon">
-              <i class="fas fa-search"></i>
+    
+      <span id= "search-bar">
+        <form class="search-form" id="search-form">
+            <div class="row">
+              <div class="col-3">
+                <input
+                  type="search"
+                  placeholder="Type a city.."
+                  autofocus="on"
+                  autocomplete="off"
+                  id="city-input"
+                  class="form-control shadow-sm w-100"
+                />
+              </div>
             </span>
-          </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="form-control btn btn-primary shadow-sm w-100"
+                />
+              </div>
+              <div class="col-3">
+                <button class= "btn btn-success w-100" id="current-location-button">
+                    Current
+                </button>           
+              </div>
+          </form>
         </div>
-        <div class="credit">
+<div class="credit">
            <a href="https://github.com/adeckcodes/weather-app.git" target="_blank">Open-source code</a> by Alyssa Deck
         </div>
       </div>
